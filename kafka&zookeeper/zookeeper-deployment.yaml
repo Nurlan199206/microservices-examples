@@ -1,0 +1,191 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: zookeeper
+  namespace: f-plus
+  selfLink: /apis/apps/v1/namespaces/f-plus/deployments/zookeeper
+  uid: 656f6206-3230-4f28-957a-361d19b08d38
+  resourceVersion: '87332120'
+  generation: 1
+  creationTimestamp: '2021-12-12T13:34:55Z'
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+  managedFields:
+    - manager: dashboard
+      operation: Update
+      apiVersion: apps/v1
+      time: '2021-12-12T13:34:55Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:deployment.kubernetes.io/revision': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector':
+            .: {}
+            'f:matchLabels':
+              .: {}
+              'f:app': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:app': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"kafka"}':
+                  .: {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"KAFKA_ADVERTISED_HOST_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"KAFKA_ZOOKEEPER_CONNECT"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":6379,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:resources': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+                'k:{"name":"redis"}':
+                  .: {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":6379,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:resources': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+                'k:{"name":"zookeeper"}':
+                  .: {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:name': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":2181,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:resources': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:imagePullSecrets':
+                .: {}
+                'k:{"name":"image-pull-token"}':
+                  .: {}
+                  'f:name': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2022-02-22T12:43:49Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zookeeper
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: zookeeper
+    spec:
+      containers:
+        - name: zookeeper
+          image: 'zookeeper:3.6.3'
+          ports:
+            - containerPort: 2181
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: image-pull-token
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 1
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2021-12-12T13:35:03Z'
+      lastTransitionTime: '2021-12-12T13:34:55Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "zookeeper-8ff859c56" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2022-02-22T12:43:49Z'
+      lastTransitionTime: '2022-02-22T12:43:49Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
