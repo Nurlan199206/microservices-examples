@@ -1,0 +1,71 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: zookeeper
+  namespace: f-plus
+  selfLink: /api/v1/namespaces/f-plus/services/zookeeper
+  uid: e6b60de9-e684-4110-9ecd-b80c03c8a768
+  resourceVersion: '60350922'
+  creationTimestamp: '2021-12-12T13:35:56Z'
+  managedFields:
+    - manager: dashboard
+      operation: Update
+      apiVersion: v1
+      time: '2021-12-12T13:35:56Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:internalTrafficPolicy': {}
+          'f:ipFamilies': {}
+          'f:ipFamilyPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":2181,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+            'k:{"port":2888,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+            'k:{"port":3888,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+            'k:{"port":9092,"protocol":"TCP"}':
+              .: {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:app': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: zookeeper
+      protocol: TCP
+      port: 2181
+      targetPort: 2181
+    - name: follower
+      protocol: TCP
+      port: 2888
+      targetPort: 2888
+    - name: leader
+      protocol: TCP
+      port: 3888
+      targetPort: 3888
+  selector:
+    app: zookeeper
+  clusterIP: 10.100.140.185
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
