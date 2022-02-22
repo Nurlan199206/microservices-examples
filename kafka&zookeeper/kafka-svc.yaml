@@ -1,0 +1,44 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: kafka-svc
+  namespace: f-plus
+  selfLink: /api/v1/namespaces/f-plus/services/kafka-svc
+  uid: 263ee965-59cb-430a-b339-2b021d8de0c2
+  resourceVersion: '60351074'
+  creationTimestamp: '2021-12-12T13:36:29Z'
+  managedFields:
+    - manager: dashboard
+      operation: Update
+      apiVersion: v1
+      time: '2021-12-12T13:36:29Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:internalTrafficPolicy': {}
+          'f:ipFamilies': {}
+          'f:ipFamilyPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":9092,"protocol":"TCP"}':
+              .: {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:app': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - protocol: TCP
+      port: 9092
+      targetPort: 9092
+  selector:
+    app: kafka
+  clusterIP: 10.100.192.102
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
