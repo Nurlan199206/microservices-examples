@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"kubernetes.io/ingress.class":"nginx","nginx.ingress.kubernetes.io/backend-protocol":"HTTPS","nginx.ingress.kubernetes.io/configuration-snippet":"more_set_headers \"Access-Control-Expose-Headers: Content-Length,Content-Range,Access-Control-Expose-Headers,Content-Disposition\";\n","nginx.ingress.kubernetes.io/cors-allow-headers":"DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,Content-Disposition","nginx.ingress.kubernetes.io/enable-cors":"true","nginx.ingress.kubernetes.io/from-to-www-redirect":"true","nginx.ingress.kubernetes.io/keep-alive":"900","nginx.ingress.kubernetes.io/proxy-stream-timeout":"900","nginx.ingress.kubernetes.io/ssl-passthrough":"true","nginx.ingress.kubernetes.io/upstream-keepalive-timeout":"900"},"labels":{"k8s-app":"kubernetes-dashboard"},"name":"kubernetes-dashboard","namespace":"kube-system"},"spec":{"rules":[{"host":"k8s-test.alantech.kz","http":{"paths":[{"backend":{"service":{"name":"kubernetes-dashboard","port":{"number":443}}},"path":"/","pathType":"Prefix"}]}}],"tls":[{"hosts":["k8s-test.alantech.kz"],"secretName":"alantech-wildcard"}]}}
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Access-Control-Expose-Headers: Content-Length,Content-Range,Access-Control-Expose-Headers,Content-Disposition";
+    nginx.ingress.kubernetes.io/cors-allow-headers: DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,Content-Disposition
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/keep-alive: "900"
+    nginx.ingress.kubernetes.io/proxy-stream-timeout: "900"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "900"
+  creationTimestamp: "2022-06-15T08:45:47Z"
+  generation: 1
+  labels:
+    k8s-app: kubernetes-dashboard
+  name: kubernetes-dashboard
+  namespace: kube-system
+  resourceVersion: "4065608"
+  uid: 049df70a-b551-4278-ba9f-6c7ec4fbf6de
+spec:
+  rules:
+  - host: k8s-test.alantech.kz
+    http:
+      paths:
+      - backend:
+          service:
+            name: kubernetes-dashboard
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - k8s-test.alantech.kz
+    secretName: alantech-wildcard
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.130.10
+    - ip: 192.168.130.11
+    - ip: 192.168.130.12
