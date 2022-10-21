@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/issuer: "letsencrypt-prod"
+#    acme.cert-manager.io/http01-edit-in-place: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/keep-alive: "900"
+    nginx.ingress.kubernetes.io/proxy-stream-timeout: "900"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/upstream-keepalive-timeout: "900"
+  name: k8s-dash-dev
+  namespace: kube-system
+spec:
+  rules:
+  - host: k8s-dev.kacd.kz
+    http:
+      paths:
+      - backend:
+          service:
+            name: kubernetes-dashboard
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - k8s-dev.kacd.kz
+    secretName: dash-tls
+status:
+  loadBalancer:
+    ingress:
+    - ip: 172.22.16.3
