@@ -1,0 +1,563 @@
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prometheus-stack
+    meta.helm.sh/release-namespace: monitoring
+    prometheus-operator-input-hash: '4219693712683088694'
+  resourceVersion: '1826811'
+  name: alertmanager-prometheus-stack-kube-prom-alertmanager
+  uid: 8dc49cfc-9a3b-4db8-b875-1477ba39690b
+  creationTimestamp: '2024-04-19T19:12:17Z'
+  generation: 16
+  managedFields:
+    - manager: PrometheusOperator
+      operation: Update
+      apiVersion: apps/v1
+      time: '2024-04-19T19:28:47Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:meta.helm.sh/release-name': {}
+            'f:meta.helm.sh/release-namespace': {}
+            'f:prometheus-operator-input-hash': {}
+          'f:labels':
+            'f:app.kubernetes.io/managed-by': {}
+            'f:chart': {}
+            'f:app': {}
+            .: {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:release': {}
+            'f:heritage': {}
+            'f:app.kubernetes.io/version': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:managed-by': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"903f541b-7dab-452a-9597-a8fd08e6037f"}': {}
+        'f:spec':
+          'f:podManagementPolicy': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:serviceName': {}
+          'f:template':
+            'f:metadata':
+              'f:annotations':
+                .: {}
+                'f:kubectl.kubernetes.io/default-container': {}
+              'f:labels':
+                .: {}
+                'f:alertmanager': {}
+                'f:app.kubernetes.io/instance': {}
+                'f:app.kubernetes.io/managed-by': {}
+                'f:app.kubernetes.io/name': {}
+                'f:app.kubernetes.io/version': {}
+            'f:spec':
+              'f:volumes':
+                .: {}
+                'k:{"name":"alertmanager-prometheus-stack-kube-prom-alertmanager-db"}':
+                  .: {}
+                  'f:emptyDir': {}
+                  'f:name': {}
+                'k:{"name":"config-out"}':
+                  .: {}
+                  'f:emptyDir':
+                    .: {}
+                    'f:medium': {}
+                  'f:name': {}
+                'k:{"name":"config-volume"}':
+                  .: {}
+                  'f:name': {}
+                  'f:secret':
+                    .: {}
+                    'f:defaultMode': {}
+                    'f:secretName': {}
+                'k:{"name":"tls-assets"}':
+                  .: {}
+                  'f:name': {}
+                  'f:projected':
+                    .: {}
+                    'f:defaultMode': {}
+                    'f:sources': {}
+                'k:{"name":"web-config"}':
+                  .: {}
+                  'f:name': {}
+                  'f:secret':
+                    .: {}
+                    'f:defaultMode': {}
+                    'f:secretName': {}
+              'f:containers':
+                'k:{"name":"alertmanager"}':
+                  'f:image': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/alertmanager"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                    'k:{"mountPath":"/etc/alertmanager/certs"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:readOnly': {}
+                    'k:{"mountPath":"/etc/alertmanager/config"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                    'k:{"mountPath":"/etc/alertmanager/config_out"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:readOnly': {}
+                    'k:{"mountPath":"/etc/alertmanager/web_config/web-config.yaml"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:readOnly': {}
+                      'f:subPath': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources':
+                    .: {}
+                    'f:requests':
+                      .: {}
+                      'f:memory': {}
+                  'f:args': {}
+                  'f:livenessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"POD_IP"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:fieldRef': {}
+                  'f:readinessProbe':
+                    .: {}
+                    'f:failureThreshold': {}
+                    'f:httpGet':
+                      .: {}
+                      'f:path': {}
+                      'f:port': {}
+                      'f:scheme': {}
+                    'f:initialDelaySeconds': {}
+                    'f:periodSeconds': {}
+                    'f:successThreshold': {}
+                    'f:timeoutSeconds': {}
+                  'f:securityContext':
+                    .: {}
+                    'f:allowPrivilegeEscalation': {}
+                    'f:capabilities':
+                      .: {}
+                      'f:drop': {}
+                    'f:readOnlyRootFilesystem': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":9093,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                    'k:{"containerPort":9094,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                    'k:{"containerPort":9094,"protocol":"UDP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:name': {}
+                'k:{"name":"config-reloader"}':
+                  'f:image': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/etc/alertmanager/config"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:readOnly': {}
+                    'k:{"mountPath":"/etc/alertmanager/config_out"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources': {}
+                  'f:args': {}
+                  'f:command': {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"POD_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:fieldRef': {}
+                    'k:{"name":"SHARD"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:securityContext':
+                    .: {}
+                    'f:allowPrivilegeEscalation': {}
+                    'f:capabilities':
+                      .: {}
+                      'f:drop': {}
+                    'f:readOnlyRootFilesystem': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":8080,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:name': {}
+              'f:dnsPolicy': {}
+              'f:automountServiceAccountToken': {}
+              'f:serviceAccount': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:terminationGracePeriodSeconds': {}
+              'f:initContainers':
+                .: {}
+                'k:{"name":"init-config-reloader"}':
+                  'f:image': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/etc/alertmanager/config"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                      'f:readOnly': {}
+                    'k:{"mountPath":"/etc/alertmanager/config_out"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources': {}
+                  'f:args': {}
+                  'f:command': {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"POD_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:fieldRef': {}
+                    'k:{"name":"SHARD"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:securityContext':
+                    .: {}
+                    'f:allowPrivilegeEscalation': {}
+                    'f:capabilities':
+                      .: {}
+                      'f:drop': {}
+                    'f:readOnlyRootFilesystem': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":8080,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:name': {}
+                      'f:protocol': {}
+                  'f:name': {}
+              'f:serviceAccountName': {}
+              'f:securityContext':
+                .: {}
+                'f:fsGroup': {}
+                'f:runAsGroup': {}
+                'f:runAsNonRoot': {}
+                'f:runAsUser': {}
+                'f:seccompProfile':
+                  .: {}
+                  'f:type': {}
+          'f:updateStrategy':
+            'f:type': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2024-04-20T18:16:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:currentReplicas': {}
+          'f:currentRevision': {}
+          'f:updatedReplicas': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:availableReplicas': {}
+          'f:collisionCount': {}
+          'f:observedGeneration': {}
+          'f:updateRevision': {}
+      subresource: status
+  namespace: monitoring
+  ownerReferences:
+    - apiVersion: monitoring.coreos.com/v1
+      kind: Alertmanager
+      name: prometheus-stack-kube-prom-alertmanager
+      uid: 903f541b-7dab-452a-9597-a8fd08e6037f
+      controller: true
+      blockOwnerDeletion: true
+  labels:
+    app: kube-prometheus-stack-alertmanager
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/instance: prometheus-stack
+    managed-by: prometheus-operator
+    release: prometheus-stack
+    app.kubernetes.io/version: 58.2.0
+    app.kubernetes.io/managed-by: Helm
+    chart: kube-prometheus-stack-58.2.0
+    heritage: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      alertmanager: prometheus-stack-kube-prom-alertmanager
+      app.kubernetes.io/instance: prometheus-stack-kube-prom-alertmanager
+      app.kubernetes.io/managed-by: prometheus-operator
+      app.kubernetes.io/name: alertmanager
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        alertmanager: prometheus-stack-kube-prom-alertmanager
+        app.kubernetes.io/instance: prometheus-stack-kube-prom-alertmanager
+        app.kubernetes.io/managed-by: prometheus-operator
+        app.kubernetes.io/name: alertmanager
+        app.kubernetes.io/version: 0.27.0
+      annotations:
+        kubectl.kubernetes.io/default-container: alertmanager
+    spec:
+      restartPolicy: Always
+      initContainers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: init-config-reloader
+          command:
+            - /bin/prometheus-config-reloader
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: SHARD
+              value: '-1'
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+          ports:
+            - name: reloader-web
+              containerPort: 8080
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: config-volume
+              readOnly: true
+              mountPath: /etc/alertmanager/config
+            - name: config-out
+              mountPath: /etc/alertmanager/config_out
+          terminationMessagePolicy: FallbackToLogsOnError
+          image: 'quay.io/prometheus-operator/prometheus-config-reloader:v0.73.1'
+          args:
+            - '--watch-interval=0'
+            - '--listen-address=:8080'
+            - '--config-file=/etc/alertmanager/config/alertmanager.yaml.gz'
+            - >-
+              --config-envsubst-file=/etc/alertmanager/config_out/alertmanager.env.yaml
+            - '--watched-dir=/etc/alertmanager/config'
+      serviceAccountName: prometheus-stack-kube-prom-alertmanager
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 120
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 2000
+        runAsNonRoot: true
+        fsGroup: 2000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - resources:
+            requests:
+              memory: 200Mi
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: http-web
+              scheme: HTTP
+            initialDelaySeconds: 3
+            timeoutSeconds: 3
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 10
+          terminationMessagePath: /dev/termination-log
+          name: alertmanager
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: http-web
+              scheme: HTTP
+            timeoutSeconds: 3
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 10
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.podIP
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+          ports:
+            - name: http-web
+              containerPort: 9093
+              protocol: TCP
+            - name: mesh-tcp
+              containerPort: 9094
+              protocol: TCP
+            - name: mesh-udp
+              containerPort: 9094
+              protocol: UDP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/alertmanager/config
+            - name: config-out
+              readOnly: true
+              mountPath: /etc/alertmanager/config_out
+            - name: tls-assets
+              readOnly: true
+              mountPath: /etc/alertmanager/certs
+            - name: alertmanager-prometheus-stack-kube-prom-alertmanager-db
+              mountPath: /alertmanager
+            - name: web-config
+              readOnly: true
+              mountPath: /etc/alertmanager/web_config/web-config.yaml
+              subPath: web-config.yaml
+          terminationMessagePolicy: FallbackToLogsOnError
+          image: 'quay.io/prometheus/alertmanager:v0.27.0'
+          args:
+            - '--config.file=/etc/alertmanager/config_out/alertmanager.env.yaml'
+            - '--storage.path=/alertmanager'
+            - '--data.retention=120h'
+            - '--cluster.listen-address='
+            - '--web.listen-address=:9093'
+            - >-
+              --web.external-url=http://prometheus-stack-kube-prom-alertmanager.monitoring:9093
+            - '--web.route-prefix=/'
+            - '--cluster.label=monitoring/prometheus-stack-kube-prom-alertmanager'
+            - >-
+              --cluster.peer=alertmanager-prometheus-stack-kube-prom-alertmanager-0.alertmanager-operated:9094
+            - '--cluster.reconnect-timeout=5m'
+            - '--web.config.file=/etc/alertmanager/web_config/web-config.yaml'
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: config-reloader
+          command:
+            - /bin/prometheus-config-reloader
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: SHARD
+              value: '-1'
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+          ports:
+            - name: reloader-web
+              containerPort: 8080
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: config-volume
+              readOnly: true
+              mountPath: /etc/alertmanager/config
+            - name: config-out
+              mountPath: /etc/alertmanager/config_out
+          terminationMessagePolicy: FallbackToLogsOnError
+          image: 'quay.io/prometheus-operator/prometheus-config-reloader:v0.73.1'
+          args:
+            - '--listen-address=:8080'
+            - '--reload-url=http://127.0.0.1:9093/-/reload'
+            - '--config-file=/etc/alertmanager/config/alertmanager.yaml.gz'
+            - >-
+              --config-envsubst-file=/etc/alertmanager/config_out/alertmanager.env.yaml
+            - '--watched-dir=/etc/alertmanager/config'
+      automountServiceAccountToken: true
+      serviceAccount: prometheus-stack-kube-prom-alertmanager
+      volumes:
+        - name: config-volume
+          secret:
+            secretName: alertmanager-prometheus-stack-kube-prom-alertmanager-generated
+            defaultMode: 420
+        - name: tls-assets
+          projected:
+            sources:
+              - secret:
+                  name: >-
+                    alertmanager-prometheus-stack-kube-prom-alertmanager-tls-assets-0
+            defaultMode: 420
+        - name: config-out
+          emptyDir:
+            medium: Memory
+        - name: web-config
+          secret:
+            secretName: alertmanager-prometheus-stack-kube-prom-alertmanager-web-config
+            defaultMode: 420
+        - name: alertmanager-prometheus-stack-kube-prom-alertmanager-db
+          emptyDir: {}
+      dnsPolicy: ClusterFirst
+  serviceName: alertmanager-operated
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+  revisionHistoryLimit: 10
+status:
+  observedGeneration: 16
+  availableReplicas: 1
+  updateRevision: alertmanager-prometheus-stack-kube-prom-alertmanager-6669d7b465
+  currentRevision: alertmanager-prometheus-stack-kube-prom-alertmanager-6669d7b465
+  currentReplicas: 1
+  updatedReplicas: 1
+  replicas: 1
+  collisionCount: 0
+  readyReplicas: 1
